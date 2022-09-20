@@ -7,12 +7,12 @@ module.exports = async(req, res) => {
     res.setHeader("Open-Source", "https://github.com/cachecleanerjeet/JiosaavnAPI")
     res.setHeader("Made-By", "Tuhin Kanti Pal, https://github.com/cachecleanerjeet")
 
-    var songId = await getId(reqLink)
+    var songId = await getsid (reqLink)
     if (songId == "error") res.json({ result: "false" })
 
     axios({
         method: 'get',
-        url: `https://www.jiosaavn.com/api.php?__call=song.getDetails&cc=in&_marker=0%3F_marker%3D0&_format=json&pids=${getsid}`
+        url: `https://www.jiosaavn.com/api.php?__call=song.getDetails&cc=in&_marker=0%3F_marker%3D0&_format=json&pids=${songId}`
     })
 
     .then(async function(response) {
@@ -55,7 +55,7 @@ module.exports = async(req, res) => {
         })
 }
 
-async function getId(reqLink) {
+async function getsid(reqLink) {
     return axios({
         method: 'get',
         url: reqLink
