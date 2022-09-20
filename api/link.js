@@ -1,7 +1,7 @@
 const axios = require('axios')
 
 module.exports = async(req, res) => {
-    const reqLink = req.query.query
+    const reqLink = req.query.id
     res.setHeader("Access-Control-Allow-Origin", "*")
     res.setHeader("Cache-Control", "s-maxage=300, stale-while-revalidate")
     res.setHeader("Open-Source", "https://github.com/cachecleanerjeet/JiosaavnAPI")
