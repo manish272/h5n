@@ -196,7 +196,9 @@ app.get('/link', (req, res) => {
                     var replacemediaurl = replacemediaurltxt.replace('preview.saavncdn.com', 'aac.saavncdn.com');
                     var replaceqs = replacemediaurl.replace('_96_p', '_160');
                     var imgq = replaceqs.replace('150x150', '500x500');
-                    var result = JSON.parse(imgq);
+                    var ampr = imgq.replace(/&amp;/gi, "&");
+                    var copr = ampr.replace(/&copy;/gi, "©");
+                    var result = JSON.parse(copr);
                     var songresult = result.tuhin;
                     var output = JSON.stringify(songresult);
                     res.send(output);
